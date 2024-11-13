@@ -1,11 +1,10 @@
 import React from 'react'
+import CoinList from '../services/homeCoinGrid'
 
 const Home = () => {
     return (
-        <div className='flex items-center h-screen'>
-            <div className='mx-auto'>
-                Home
-            </div>
+        <div className='flex justify-center items-center min-h-screen'>
+            <CoinList />
         </div>
     )
 }
