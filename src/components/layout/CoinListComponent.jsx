@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fetchCoinList } from '../services/CoinListService'
 
-const CoinsComponent = ({ limit, title }) => {
+const CoinListComponent = ({ limit, title }) => {
   const [data, setData] = useState({ coins: [], loading: true, error: null })
 
   useEffect(() => {
@@ -22,13 +22,13 @@ const CoinsComponent = ({ limit, title }) => {
   if (data.error) return <p>{data.error}</p>
 
   return (
-    <div className="h-full flex flex-col gap-2 bg-gray-200 px-4 py-4 rounded-lg min-w-full sm:min-w-[350px] md:min-w-[400px] lg:min-w-[500px] xl:min-w-[600px]">
+    <div className="h-auto flex flex-col gap-2 bg-gray-200 px-4 py-4 rounded-lg">
       {title && <span className='font-bold text-xl mb-2'>{title}</span>}
       
       {data.coins.map((coin) => (
         <div
           key={coin.uuid}
-          className="flex items-center bg-gray-100 shadow-lg p-2 rounded-lg hover:bg-gray-300 hover:scale-105 transition-transform duration-300 ease-in-out"
+          className="flex items-center bg-gray-100 shadow-lg p-1 rounded-lg hover:bg-gray-300 hover:scale-105 transition-transform duration-300 ease-in-out"
         >
           <img
             src={coin.iconUrl}
@@ -48,4 +48,4 @@ const CoinsComponent = ({ limit, title }) => {
   )
 }
 
-export default CoinsComponent
+export default CoinListComponent

@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-export const fetchCoinInfo = async (uuid, timePeriod) => {
+export const fetchCoinInfo = async (uuid = 'Qwsogvtv82FCd', timePeriod = '3h') => {
     const options = {
         method: 'GET',
-        url: 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history',
+        url: `https://coinranking1.p.rapidapi.com/coin/${uuid}/history`,
         params: {
-            referenceCurrencyUuid: uuid,
+            referenceCurrencyUuid: 'yhjMzLPhuIDl',
             timePeriod: timePeriod
         },
         headers: {
@@ -16,8 +16,9 @@ export const fetchCoinInfo = async (uuid, timePeriod) => {
 
     try {
         const response = await axios.request(options)
-        console.log(response.data)
+        return response.data
     } catch (error) {
         console.error(error)
+        throw new Error('Error fetching coin info')
     }
 }
